@@ -16,7 +16,9 @@ COPY bin/syncthing.sh /etc/services.d/syncthing/run
 COPY bin/healthcheck.sh /etc/services.d/syncthing/healthcheck
 
 ARG SYNCTHING_HOME_DIRECTORY
-VOLUME ${SYNCTHING_HOME_DIRECTORY:-/syncthing}
+VOLUME ${SYNCTHING_HOME_DIRECTORY:-/srv/syncthing}
+ARG SYNCTHING_DATA_DIRECTORY
+VOLUME ${SYNCTHING_DATA_DIRECTORY:-/sync}
 
 ARG SYNCTHING_WEBUI_PORT
 EXPOSE ${SYNCTHING_WEBUI_PORT:-8384}
