@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  syncthing:
+    build: 
+      context: .
+      args:
+        SYNCTHING_HOME_DIRECTORY: ${SYNCTHING_HOME_DIRECTORY}
+        SYNCTHING_WEBUI_PORT: ${SYNCTHING_WEBUI_PORT}
+    hostname: ${SYNCTHING_HOSTNAME}
+    environment:
+      RUN_USER: ${SYNCTHING_RUN_USER}
+      RUN_UID: ${SYNCTHING_RUN_UID}
+      RUN_GROUP: ${SYNCTHING_RUN_GROUP}
+      RUN_GID: ${SYNCTHING_RUN_GID}
+      SYNCTHING_HOME_DIRECTORY: ${SYNCTHING_HOME_DIRECTORY}
+      SYNCTHING_WEBUI_PORT: ${SYNCTHING_WEBUI_PORT}
+    restart: unless-stopped
+    volumes:
+      - ${SYNCTHING_HOME_DIRECTORY}:${SYNCTHING_HOME_DIRECTORY}
+    ports:
+      - ${SYNCTHING_WEBUI_PORT_HOST}:${SYNCTHING_WEBUI_PORT}
+    healthcheck:
+      test: ${SYNCTHING_HEALTHCHECK}
+      interval: '60s'
+      retries: 3
+      timeout: '30s'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "20"
