@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   syncthing:
-    build: 
+    build:
       context: .
       args:
         SYNCTHING_HOME_DIRECTORY: ${SYNCTHING_HOME_DIRECTORY}
@@ -19,7 +19,7 @@ services:
     restart: unless-stopped
     volumes:
       - ${SYNCTHING_HOME_DIRECTORY}:${SYNCTHING_HOME_DIRECTORY}
-      - ${SYNCTHING_DATA_DIRECTORY}:${SYNCTHING_DATA_DIRECTORY}
+      - ${SYNCTHING_DATA_DIRECTORY}:/sync
     ports:
       - ${SYNCTHING_WEBUI_PORT_HOST}:${SYNCTHING_WEBUI_PORT}
     healthcheck:
