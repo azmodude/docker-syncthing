@@ -15,5 +15,3 @@ down:
 	sudo docker-compose down
 build:
 	sudo docker-compose build
-push:
-	sudo docker push eu.gcr.io/azmo-containers-1/github-azmodude-docker-syncthing
