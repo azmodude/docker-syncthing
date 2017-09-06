@@ -1,5 +1,5 @@
 ---
 steps:
-  - name: 'eu.gcr.io/azmo-containers-1/syncthing'
+  - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t','eu.gcr.io/azmo-containers-1/syncthing:$COMMIT_SHA', '-t', 'eu.gcr.io/azmo-containers-1/syncthing_latest']
 images: ['eu.gcr.io/azmo-containers-1/syncthing']
