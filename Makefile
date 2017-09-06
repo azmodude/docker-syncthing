@@ -14,6 +14,6 @@ up:
 down:
 	sudo docker-compose down
 build:
-	sudo docker-compose build 
+	sudo docker-compose build
 push:
-	sudo docker push azmo/syncthing:latest
+	sudo docker push eu.gcr.io/azmo-containers-1/github-azmodude-docker-syncthing
