@@ -9,11 +9,11 @@ RUN apt-get update && \
     apt-get -y install syncthing syncthing-inotify && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY bin/00-create-users-fix-permissions.sh /etc/cont-init.d/
-COPY bin/01-generate-api-key.sh /etc/cont-init.d/
+COPY setup/00-create-users-fix-permissions.sh /etc/cont-init.d/
+COPY setup/01-generate-api-key.sh /etc/cont-init.d/
 COPY bin/syncthing-inotify.sh /etc/services.d/syncthing-inotify/run
 COPY bin/syncthing.sh /etc/services.d/syncthing/run
-COPY bin/healthcheck.sh /etc/services.d/syncthing/healthcheck
+COPY healthcheck/healthcheck.sh /etc/services.d/syncthing/healthcheck
 
 ARG SYNCTHING_HOME_DIRECTORY
 VOLUME ${SYNCTHING_HOME_DIRECTORY:-/srv/syncthing}
