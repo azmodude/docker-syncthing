@@ -7,7 +7,7 @@ services:
       args:
         SYNCTHING_HOME_DIRECTORY: ${SYNCTHING_HOME_DIRECTORY}
         SYNCTHING_WEBUI_PORT: ${SYNCTHING_WEBUI_PORT}
-    image: azmo/docker-syncthing
+    image: azmo/syncthing
     hostname: ${SYNCTHING_HOSTNAME}
     environment:
       RUN_USER: ${SYNCTHING_RUN_USER}
