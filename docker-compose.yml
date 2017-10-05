@@ -21,6 +21,7 @@ services:
     volumes:
       - ${SYNCTHING_HOME_DIRECTORY}:${SYNCTHING_HOME_DIRECTORY}
       - ${SYNCTHING_DATA_DIRECTORY}:/sync
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - ${SYNCTHING_WEBUI_PORT_HOST}:${SYNCTHING_WEBUI_PORT}
     healthcheck:
