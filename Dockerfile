@@ -1,4 +1,4 @@
-FROM azmo/base:latest
+FROM azmo/base:debian
 LABEL maintainer "Gordon Schulz <gordon.schulz@gmail.com"
 
 RUN apt-get update && \
