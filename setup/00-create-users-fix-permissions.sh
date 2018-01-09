@@ -1,8 +1,8 @@
 #!/usr/bin/with-contenv /bin/bash
 
->&2 echo "adding '${RUN_USER}' with UID ${RUN_UID} and group '${RUN_GROUP}' with GID ${RUN_GID}"
-groupadd -g $RUN_GID $RUN_GROUP || true && \
-    useradd -c 'Run User' -s /bin/bash -m -g $RUN_GID -u $RUN_UID $RUN_USER || true
+>&2 echo "adding 'syncthing' with UID ${RUN_UID} and group 'syncthing' with GID ${RUN_GID}"
+groupadd -g "${RUN_GID}" syncthing || true && \
+    useradd -c 'Run User' -s /bin/bash -m -g "${RUN_GID}" -u "${RUN_UID}" syncthing || true
 >&2 echo "fixing permissions"
 chown -R ${RUN_UID}:${RUN_GID} "${SYNCTHING_HOME_DIRECTORY}"
 chown ${RUN_UID}:${RUN_GID} "${SYNCTHING_DATA_DIRECTORY}"

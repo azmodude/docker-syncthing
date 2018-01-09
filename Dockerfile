@@ -15,10 +15,6 @@ COPY bin/syncthing-inotify.sh /etc/services.d/syncthing-inotify/run
 COPY bin/syncthing.sh /etc/services.d/syncthing/run
 COPY healthcheck/healthcheck.sh /etc/services.d/syncthing/healthcheck
 
-ARG SYNCTHING_HOME_DIRECTORY
-VOLUME ${SYNCTHING_HOME_DIRECTORY:-/srv/syncthing}
-ARG SYNCTHING_DATA_DIRECTORY
-VOLUME ${SYNCTHING_DATA_DIRECTORY:-/sync}
+VOLUME /srv/syncthing /sync
 
-ARG SYNCTHING_WEBUI_PORT
-EXPOSE ${SYNCTHING_WEBUI_PORT:-8384}
+EXPOSE 8384
