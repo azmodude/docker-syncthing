@@ -1,6 +1,6 @@
 # docker-syncthing
 
-A very basic [Syncthing](https://syncthing.net/) / syncthing-inotify docker image - mostly built for personal use.
+A very basic [Syncthing](https://syncthing.net/) docker image - mostly built for personal use.
 
 ## usage
 

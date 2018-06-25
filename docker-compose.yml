@@ -6,6 +6,9 @@ services:
       context: .
     image: azmo/syncthing
     hostname: ${SYNCTHING_HOSTNAME}
+    networks:
+      - default
+      - traefik_reverseproxy
     environment:
       RUN_UID: ${SYNCTHING_RUN_UID}
       RUN_GID: ${SYNCTHING_RUN_GID}
@@ -25,8 +28,19 @@ services:
       interval: '60s'
       retries: 3
       timeout: '30s'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=syncthing"
+      - "traefik.frontend.rule=Host:syncthing.zeus.zt.azmo.ninja"
+      - "traefik.port=8384"
+      - "traefik.frontend.entryPoints=http"
+      - "traefik.docker.network=traefik_reverseproxy"
     logging:
       driver: "json-file"
       options:
         max-size: "100k"
         max-file: "20"
+
+networks:
+  traefik_reverseproxy:
+    external: true
