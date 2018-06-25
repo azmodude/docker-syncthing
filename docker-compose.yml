@@ -12,14 +12,12 @@ services:
     environment:
       RUN_UID: ${SYNCTHING_RUN_UID}
       RUN_GID: ${SYNCTHING_RUN_GID}
-      SYNCTHING_HOME_DIRECTORY: ${SYNCTHING_HOME_DIRECTORY}
-      SYNCTHING_DATA_DIRECTORY: ${SYNCTHING_DATA_DIRECTORY}
       SYNCTHING_WEBUI_PORT: ${SYNCTHING_WEBUI_PORT}
       SYNCTHING_WEBUI_ADDRESS: ${SYNCTHING_WEBUI_ADDRESS}
     restart: unless-stopped
     volumes:
-      - ${SYNCTHING_HOME_DIRECTORY}:/srv/syncthing
-      - ${SYNCTHING_DATA_DIRECTORY}:/sync
+      - ${SYNCTHING_HOME_DIRECTORY}:/syncthing
+      - ${SYNCTHING_DATA_DIRECTORY}:/syncthing-data
       - /etc/localtime:/etc/localtime:ro
     ports:
       - ${SYNCTHING_WEBUI_PORT}:8384
