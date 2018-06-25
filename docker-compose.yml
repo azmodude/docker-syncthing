@@ -21,6 +21,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - ${SYNCTHING_WEBUI_PORT}:8384
+      - ${SYNCTHING_LISTEN_PORT}:22000
+      - ${SYNCTHING_BROADCAST_PORT}:21027/udp
     healthcheck:
       test: ${SYNCTHING_HEALTHCHECK}
       interval: '60s'
