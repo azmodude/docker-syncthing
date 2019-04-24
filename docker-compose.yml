@@ -31,7 +31,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.backend=syncthing"
-      - "traefik.frontend.rule=Host:syncthing.zeus.zt.azmo.ninja"
+      - "traefik.frontend.rule=Host:syncthing.zeus.int.azmo.ninja"
       - "traefik.port=8384"
       - "traefik.frontend.entryPoints=http"
       - "traefik.docker.network=traefik_reverseproxy"

@@ -11,6 +11,6 @@ RUN apt-get update && \
 
 COPY rootfs /
 
-VOLUME /srv/syncthing /sync
+VOLUME /syncthing /syncthing-data
 
 EXPOSE 8384
