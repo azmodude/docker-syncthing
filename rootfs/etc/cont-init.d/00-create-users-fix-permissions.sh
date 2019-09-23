@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv /bin/bash
 
 >&2 echo "adding 'syncthing' with UID ${RUN_UID} and group 'syncthing' with GID ${RUN_GID}"
 groupadd -g "${RUN_GID}" syncthing || true && \

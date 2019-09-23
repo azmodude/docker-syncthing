@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM azmo/base:ubuntu-latest
 LABEL maintainer "Gordon Schulz <gordon.schulz@gmail.com"
 
 RUN apt-get update && \
