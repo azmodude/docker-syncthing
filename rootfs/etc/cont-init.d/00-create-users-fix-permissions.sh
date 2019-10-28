@@ -5,4 +5,6 @@ groupadd -g "${RUN_GID}" syncthing || true && \
     useradd -c 'Run User' -s /bin/bash -M -d /syncthing -g "${RUN_GID}" -u "${RUN_UID}" syncthing || true
 >&2 echo "fixing permissions"
 chown -R "${RUN_UID}:${RUN_GID}" /syncthing
+find /syncthing -type f -exec chmod 600 '{}' \;
+find /syncthing -type d -exec chmod 700 '{}' \;
 chown "${RUN_UID}:${RUN_GID}" /syncthing-data
