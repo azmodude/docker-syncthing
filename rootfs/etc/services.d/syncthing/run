@@ -2,6 +2,6 @@
 SYNCTHING_API_KEY=$(cat /.apikey)
 DOCKER_IP=$(hostname -i)
 
-exec s6-setuidgid syncthing syncthing -home=/syncthing \
+exec gosu runuser syncthing -home=/syncthing \
     -gui-address="${SYNCTHING_WEBUI_ADDRESS:-${DOCKER_IP}}:${SYNCTHING_WEBUI_PORT}" \
     -gui-apikey="${SYNCTHING_API_KEY}" -no-browser
