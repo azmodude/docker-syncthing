@@ -1,4 +1,4 @@
-version: '3.3'
+version: '2.1'
 
 services:
   syncthing:
@@ -19,11 +19,11 @@ services:
       - ${SYNCTHING_DATA_DIRECTORY}:/syncthing-data
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - ${SYNCTHING_WEBUI_PORT}:8384
+      - 127.0.0.1:${SYNCTHING_WEBUI_PORT}:8384
       - ${SYNCTHING_LISTEN_PORT}:22000
       - ${SYNCTHING_BROADCAST_PORT}:21027/udp
     healthcheck:
-      test: ${SYNCTHING_HEALTHCHECK}
+      test: /etc/services.d/syncthing/healthcheck
       interval: '60s'
       retries: 3
       timeout: '30s'
