@@ -2,7 +2,7 @@ FROM azmo/base:ubuntu-latest
 LABEL maintainer "Gordon Schulz <gordon.schulz@gmail.com"
 
 RUN apt-get update && \
-    apt-get -y install gnupg2 apt-transport-https gosu && \
+    apt-get -y --no-install-recommends install gnupg2 apt-transport-https && \
     curl -s https://syncthing.net/release-key.txt | apt-key add - && \
     echo "deb https://apt.syncthing.net/ syncthing stable" >  /etc/apt/sources.list.d/syncthing.list && \
     apt-get update && \
