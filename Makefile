@@ -10,7 +10,7 @@ all: build push
 
 up:
 	/usr/bin/docker run \
-		--name syncthing \
+		--name $(NAME) \
 		--env RUN_UID=$(RUN_UID) \
 		--env RUN_GID=$(RUN_GID) \
 		--hostname syncthing-$(shell hostname -s) \
@@ -23,7 +23,7 @@ up:
 		--restart unless-stopped \
 		$(IMAGE)
 down:
-	/usr/bin/docker stop syncthing
+	/usr/bin/docker stop $(NAME)
 pull:
 	/usr/bin/docker pull $(IMAGE)
 build:
