@@ -9,9 +9,25 @@
 all: build push
 
 up:
-	sed -i 's/^SYNCTHING_HOSTNAME=.*$//SYNCTHING_HOSTNAME=$(shell hostname -s)/' .env
-	sudo docker-compose up -d
+	/usr/bin/docker run \
+		--name syncthing \
+		--env RUN_UID=$(RUN_UID) \
+		--env RUN_GID=$(RUN_GID) \
+		--hostname syncthing-$(shell hostname -s) \
+		--publish 127.0.0.1:8384:8384 \
+		--publish $(SYNCTHING_LISTEN_PORT):$(SYNCTHING_LISTEN_PORT) \
+		--publish $(SYNCTHING_BROADCAST_PORT):$(SYNCTHING_BROADCAST_PORT)/udp \
+		--volume /etc/localtime:/etc/localtime:ro \
+		--volume $(SYNCTHING_DIRECTORY):/syncthing \
+		--volume $(SYNCTHING_DATA_DIRECTORY):/syncthing-data \
+		--restart unless-stopped \
+		$(IMAGE)
 down:
-	sudo docker-compose down
+	/usr/bin/docker stop syncthing
+pull:
+	/usr/bin/docker pull $(IMAGE)
 build:
-	sudo docker-compose build
+	/usr/bin/docker build -t $(IMAGE) \
+		--pull .
+push:
+	/usr/bin/docker push $(IMAGE)
