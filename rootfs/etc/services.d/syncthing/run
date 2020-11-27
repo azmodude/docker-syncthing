@@ -4,5 +4,5 @@ DOCKER_IP=$(hostname -i)
 
 exec runuser --pty --user runuser -- \
     syncthing -home=/syncthing \
-    -gui-address="${SYNCTHING_WEBUI_ADDRESS:-${DOCKER_IP}}:${SYNCTHING_WEBUI_PORT}" \
+    -gui-address="127.0.0.1:8384" \
     -gui-apikey="${SYNCTHING_API_KEY}" -no-browser
