@@ -2,7 +2,7 @@
 SYNCTHING_API_KEY=$(cat /.apikey)
 DOCKER_IP=$(hostname -i)
 
-exec runuser --pty --user runuser -- \
+s6-setuidgid ${RUN_UID}:${RUN_GID} \
     syncthing -home=/syncthing \
     -gui-address="127.0.0.1:8384" \
     -gui-apikey="${SYNCTHING_API_KEY}" -no-browser
