@@ -4,5 +4,5 @@ DOCKER_IP=$(hostname -i)
 
 s6-setuidgid ${RUN_UID}:${RUN_GID} \
     syncthing -home=/syncthing \
-    -gui-address="${DOCKER_IP}" \
+    -gui-address="${DOCKER_IP}:8384" \
     -gui-apikey="${SYNCTHING_API_KEY}" -no-browser
