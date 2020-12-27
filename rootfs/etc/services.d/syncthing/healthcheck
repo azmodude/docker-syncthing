@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv /bin/bash
 # if syncthing's webinterface is up we assume everything is fine
-curl -s -o /dev/null -w "%{http_code}" --connect-timeout 2 \
-    http://localhost:8384
+curl -sSf -o /dev/null http://$(hostname -i):8384 --connect-timeout 2 \
+    2>/dev/null
